@@ -11,21 +11,54 @@
   </head>
   
   <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/"><span>Bookers</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     <% if user_signed_in? %>
       <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to 'Home', homes_path %>
+      </li>
+      <li>
+        <%= link_to 'Users', user_path(current_user.id) %>    
+      </li>
+      <li>
+        <%= link_to 'Books', books_path(current_user.id) %>    
+      </li>
+      <li>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
       <li>
-        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to 'Home', homes_path %>
       </li>
       <li>
-        <%= link_to "ログイン", new_user_session_path %>
+        <%= link_to 'About', about_path %>
+      </li>
+      <li>
+        <%= link_to "Sign up", new_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to "Log in", new_user_session_path %>
       </li>
     <% end %>
+    </div>
+    </nav>
   </header>
   
   <body>
     <%= yield %>
   </body>
+  
+  <footer>
+      <div class='container mt-5'>
+      	<div class='row'>
+        	<div class='mx-auto'>
+        		<p>CopyRight Infratop.inc</p>
+        	</div>
+        </div>
+      </div>
+  </footer>
 </html>

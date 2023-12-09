@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   
   # サインアウト後の遷移先を設定
   def after_sign_out_path_for(resource)
-    top_path
+    homes_path
   end
   
   #protectedは呼び出された他のコントローラからも参照することができる。
