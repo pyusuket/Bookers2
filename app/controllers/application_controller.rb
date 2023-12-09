@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   # サインイン後の遷移先を設定
   def after_sign_in_path_for(resource)
-    users_path
+    books_path
   end
   
   # サインアウト後の遷移先を設定
