@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
   <head>
+    <style type="text/css">
+      .turbolinks-progress-bar {
+      position: fixed;
+      display: block;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: #0076ff;
+      z-index: 9999;
+      transition: width 300ms ease-out, opacity 150ms 150ms ease-in;
+      transform: translate3d(0, 0, 0);
+    }
+    </style>
     <title>Bookers2</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  
+    <script src="https://kit.fontawesome.com/51a709218e.js" crossorigin="anonymous"></script>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -17,33 +28,47 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to 'Home', homes_path %>
-      </li>
-      <li>
-        <%= link_to 'Users', user_path(current_user.id) %>    
-      </li>
-      <li>
-        <%= link_to 'Books', books_path(current_user.id) %>    
-      </li>
-      <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to 'Home', homes_path %>
-      </li>
-      <li>
-        <%= link_to 'About', about_path %>
-      </li>
-      <li>
-        <%= link_to "Sign up", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Log in", new_user_session_path %>
-      </li>
-    <% end %>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to  homes_path do %>
+                <i class="fa-solid fa-house">Home</i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to  user_path(current_user.id) do %>
+                <i class="fa-solid fa-users">Users</i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to  books_path(current_user.id) do %>
+                <i class="fa-solid fa-book-open">Books</i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to  destroy_user_session_path, method: :delete do %>
+                <i class="fa-solid fa-right-from-bracket">Log out</i>
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to 'Home', homes_path %>
+            </li>
+            <li>
+              <%= link_to  about_path do %>
+                <i class="fa-solid fa-link">About</i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "Sign up", new_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to "Log in", new_user_session_path %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
     </nav>
   </header>

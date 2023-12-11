@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   # サインイン後の遷移先を設定
   def after_sign_in_path_for(resource)
-    books_path
+    users_path
   end
   
   # サインアウト後の遷移先を設定
@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
 
   # configure_permitted_parametersメソッドでは、devise_parameter_sanitizer.permitメソッドを使うことでユーザー登録(sign_up)の際に、ユーザー名(name)のデータ操作を許可。ストロングパラメータと同等の役割
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
   end
 end
