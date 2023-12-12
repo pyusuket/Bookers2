@@ -2,35 +2,40 @@
 <html>
   <body>
     <main>
+      <p id="notice"></p>
       <div class='container px-5 px-sm-0'>
         <div class='row'>
           <div class='col-md-3'>
             <h2>User info</h2>
+            <tr><%= image_tag 'default-image.jpg' %></tr>
             <table class='table'>
-              <tr><img src="https://bookers-level2.herokuapp.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBelUwQmc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--d2641b9b25c05367574c436ca220afaf14632512/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVdscGFRPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4a929dbc7794f3c4610ba9ba5402762ad9cd1a14/default-image.jpg" /></tr>
-              <tr>
-            	  <th>name</th>
-            	  <th><%= @user.name %></th>
-              </tr>
-              <tr>
-            	  <th>introduction</th>
-            	  <th></th>
-              </tr>
+              <tbody>
+                <tr>
+            	    <th>name</th>
+            	    <th><%= @user.name %></th>
+                </tr>
+                <tr>
+            	    <th>introduction</th>
+            	    <th><%= @user.introduction %></th>
+                </tr>
+              </tbody>
             </table>
-          <div class='row'>
-          <i class="fas fa-user-cog"></i>
-          </div>
+              <div class='row'>
+                <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
+                  <i class="fas fa-user-cog"></i>
+                <% end %>
+              </div>
           <h2 class="mt-3">New book</h2>
           <%= form_with model: @book, url: books_path do |f| %>
             <div class="form-group">
               <%= f.label :title %><br>
-              <%= f.text_field :title %>
+              <%= f.text_field :title ,class:"form-control book_title" %>
             </div>
             <div class="form-group">
               <%= f.label :body %><br>
-              <%= f.text_area :body %>
+              <%= f.text_area :body ,class:"form-control book_body" %>
             </div>
-            <%= f.submit 'Create Book' %>
+            <%= f.submit 'Create Book',class:"btn btn-success"%>
           <% end %>
           </div>
           <div class='col-md-8 offset-md-1'>

@@ -33,7 +33,7 @@
           <% if user_signed_in? %>
             <li>
               <%= link_to user_path(current_user.id),class:"nav-link text-light" do %>
-              <i class="fa-solid fa-house "></i>Home
+              <i class="fa-solid fa-house"></i>Home
               <% end %>
             </li>
             <li>
@@ -42,7 +42,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to books_path(current_user.id),class:"nav-link text-light" do %>
+              <%= link_to book_path(current_user.id),class:"nav-link text-light" do %>
                 <i class="fa-solid fa-book-open"></i>Books
               <% end %>
             </li>
@@ -53,7 +53,7 @@
             </li>
           <% else %>
             <li>
-              <%= link_to homes_path,class:"nav-link text-light" do %>
+              <%= link_to root_path,class:"nav-link text-light" do %>
               <i class="fa-solid fa-house "></i>Home
               <% end %>
             </li>
