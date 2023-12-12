@@ -7,15 +7,15 @@
         <%= form_with model: @user, url: user_path(@user), method: :patch do |f| %>
           <div class="form-group">
             <label for="user_name">Name</label><br>
-            <%= f.text_field :name, value: @user.name %>
+            <%= f.text_field :name, value: @user.name,class:"form-control" %>
           </div>
           <div class="form-group">
-            <label for="user_image">Image</label>
-            <input class="form-control-file user_image" accept="image/*" type="file" name="user[profile_image]" id="user_profile_image" />
+            <label for="user_image">Image</label><br>
+            <%= f.file_field :image, accept: "image/*" %>
           </div>
           <div class="form-group">
             <label for="user_introduction">Introduction</label>
-            <textarea class="form-control introduction" name="user[introduction]" id="user_introduction"></textarea>
+            <%= f.text_field :introduction, value: @user.introduction,class:"form-control" %>
           </div>
           <%= f.submit 'Update' %>
         <% end %>
