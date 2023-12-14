@@ -11,7 +11,6 @@ class BooksController < ApplicationController
       @book.save
       # 作成した本のidが取得できる
       redirect_to book_path(@book.id)
-      
     end
     
     def index
@@ -22,10 +21,23 @@ class BooksController < ApplicationController
     
     def show
       @book = Book.new
+      @user = current_user
+      @book = Book.find(params[:id])
+      @user = @book.user
+    end
+    
+    def edit
+      @book = Book.find(params[:id])
     end
     
     def destroy
       
+    end
+    
+    def update
+      @book = Book.find(params[:id])
+      @book.update(book_params)
+      redirect_to book_path(@book.id)
     end
     
     private

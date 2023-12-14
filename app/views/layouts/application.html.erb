@@ -21,69 +21,70 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/51a709218e.js" crossorigin="anonymous"></script>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/"><span>Bookers</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-          <% if user_signed_in? %>
-            <li>
-              <%= link_to user_path(current_user.id),class:"nav-link text-light" do %>
-              <i class="fa-solid fa-house"></i>Home
-              <% end %>
-            </li>
-            <li>
-              <%= link_to user_path(current_user.id),class:"nav-link text-light" do %>
-                <i class="fa-solid fa-users"></i>Users
-              <% end %>
-            </li>
-            <li>
-              <%= link_to book_path(current_user.id),class:"nav-link text-light" do %>
-                <i class="fa-solid fa-book-open"></i>Books
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete,class:"nav-link text-light" do %>
-                <i class="fa-solid fa-right-from-bracket"></i>Log out
-              <% end %>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to root_path,class:"nav-link text-light" do %>
-              <i class="fa-solid fa-house "></i>Home
-              <% end %>
-            </li>
-            <li>
-              <%= link_to about_path,class:"nav-link text-light" do %>
-              <i class="fa-solid fa-house "></i>About
-              <% end %>
-            </li>
-            <li>
-              <%= link_to new_user_registration_path,class:"nav-link text-light" do %>
-              <i class="fa-solid fa-house "></i>Sign up
-              <% end %>
-            </li>
-            <li>
-              <%= link_to new_user_session_path,class:"nav-link text-light" do %>
-              <i class="fa-solid fa-house "></i>Log in
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-    </nav>
-  </header>
+  </head>
   
   <body>
-    <%= yield %>
-  </body>
-  
-  <footer>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/"><span>Bookers</span></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to user_path(current_user.id),class:"nav-link text-light" do %>
+                  <i class="fa-solid fa-house"></i> Home 
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to users_path,class:"nav-link text-light" do %>
+                    <i class="fa-solid fa-users"></i> Users 
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to books_path,class:"nav-link text-light" do %>
+                    <i class="fa-solid fa-book-open"></i> Books 
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete,class:"nav-link text-light" do %>
+                    <i class="fa-solid fa-right-from-bracket"></i> Log out 
+                  <% end %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to root_path,class:"nav-link text-light" do %>
+                  <i class="fa-solid fa-house "></i> Home 
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to about_path,class:"nav-link text-light" do %>
+                  <i class="fa-solid fa-house "></i> About 
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_registration_path,class:"nav-link text-light" do %>
+                  <i class="fa-solid fa-house "></i> Sign up 
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path,class:"nav-link text-light" do %>
+                  <i class="fa-solid fa-house "></i> Log in 
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
       <div class='container mt-5'>
       	<div class='row'>
         	<div class='mx-auto'>
@@ -91,5 +92,6 @@
         	</div>
         </div>
       </div>
-  </footer>
+    </footer>
+  </body>
 </html>
