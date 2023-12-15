@@ -34,7 +34,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       
       ## 追加したカラム
       t.string :name
-      t.string :profile_image
       t.text :introduction
 
       

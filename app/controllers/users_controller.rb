@@ -1,9 +1,16 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
+    @user = User.find(params[:id])
+    if @user.image.present?
+      @image_path = @user.image
+    else
+      @image_path = '/path/to/default-image.jpg'
+    end
   end
 
   def index
+    @users = User.all
     @user = current_user
   end
 
@@ -13,9 +20,12 @@ class UsersController < ApplicationController
   
   def update
     @user = current_user
-    user = User.find(current_user.id)
-    user.update(user_params)
-    redirect_to user_path(@user)
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: "User was successfully updated."
+    else
+      render :edit
+    end
   end
   
   def destroy
