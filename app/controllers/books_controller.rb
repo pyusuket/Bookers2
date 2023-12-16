@@ -4,7 +4,7 @@ class BooksController < ApplicationController
     end
     
     def create
-      @book = Book.new(params[:book])  
+      @book = Book.new(book_params)
       # ログインしているユーザーを認証してくれる。deviceを導入することで、current_userメソッドを使用可能。
       # @book(投稿データ)のuser_idを、current_user.id(今ログインしているユーザーの ID)に指定することで投稿データに、今ログイン中のユーザーの ID を持たせることができる。
       @book.user_id = current_user.id 
@@ -15,10 +15,12 @@ class BooksController < ApplicationController
     
     def index
       @books = Book.all
+      @book = Book.new
       @user = current_user
     end
     
     def show
+      @user = User.all
       @user = current_user
       @book = Book.find(params[:id])
       @user = @book.user

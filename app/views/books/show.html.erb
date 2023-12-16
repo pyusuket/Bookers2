@@ -3,9 +3,9 @@
   <div class='row'>
     <div class='col-md-3'>
       <h2>User info</h2>
-      <tr><%= image_tag(@user.image) %></tr>
       <table class='table'>
         <tbody>
+        <tr><%= image_tag @user.get_profile_image(100,100) %></tr>
         <tr>
           <th>name</th>
           <th><%= @user.name %></th>
@@ -39,7 +39,7 @@
       <table class='table table-hover table-inverse'>
         <tbody>
           <tr>
-            <td><%= image_tag @user.image %><br><%= link_to @book.user.name, user_path(@book.user) %></td>
+            <td><%= image_tag @user.get_profile_image(100,100) %><br><%= link_to @book.user.name, user_path(@book.user) %></td>
             <td><%= link_to @book.title, book_path(@book.user) %></td>
             <td><%= @book.body %></td>
         　　<td>
