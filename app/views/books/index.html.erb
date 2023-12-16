@@ -1,5 +1,18 @@
-<p id="notice"></p>
+ <p id="notice"></p>
 <div class='container px-5 px-sm-0'>
+  <div id="error_explanation">
+    <% if @book.errors[:title].any? || @book.errors[:body].any? %>
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+      <ul>
+        <% @book.errors[:title].each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+        <% @book.errors[:body].each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
   <div class='row'>
     <div class='col-md-3'>
       <h2>User info</h2>
@@ -62,4 +75,4 @@
       </table>
     </div>
   </div>
-</div>
+</div> 
