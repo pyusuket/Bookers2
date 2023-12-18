@@ -1,19 +1,8 @@
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Bookers2Ver2</title>
-    <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="PiIEzQSceYTFepSOcnB9wzwKNsUCi39O7BX2g7bBYzs-DuDd_1DFq3q9cWaqIF3O3pr74nunY1Ll1mwnflNVbg" />
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" media="all" href="/packs/css/application-f5b9aaf7.css" data-turbolinks-track="reload" />
-    <script src="/packs/js/application-def8dd026df2759b5728.js" data-turbolinks-track="reload"></script>
-  </head>
-  <body>
-      <main>
-        <p id="notice"></p>
-        <div class="container">
+<% flash.each do |message_type, message| %>
+  <%= content_tag :div, message, class: message_type %>
+<% end %>
+<p id="notice"></p>
+<div class="container">
   <div class="row">
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
       <h1>welcome to <i class="fa-solid fa-book"></i><strong>Bookers</strong>  !!</h1>
@@ -31,6 +20,4 @@
     </div>
   </div>
 </div>
-</main>
-</body>
-</html>
+

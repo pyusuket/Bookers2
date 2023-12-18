@@ -1,15 +1,16 @@
 class ApplicationController < ActionController::Base
   # devise利用の機能（ユーザ登録、ログイン認証など）が使われる前にconfigure_permitted_parametersメソッドが実行され
+  before_action :authenticate_user!, except: [:top,:about]
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  
   # サインイン後の遷移先を設定
   def after_sign_in_path_for(resource)
-    users_path(current_user.id)
+    user_path(current_user.id)
   end
   
   # サインアウト後の遷移先を設定
   def after_sign_out_path_for(resource)
-    homes_path
+    root_path
   end
   
   #protectedは呼び出された他のコントローラからも参照することができる。

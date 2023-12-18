@@ -1,14 +1,13 @@
-<main>
-<p id="notice"></p>
+<p id="notice"><%= flash[:notice] %></p>
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h1>Editing Book</h1>
-        <% if @user.errors.any? %>
+        <% if @book.errors.any? %>
           <div id="error_explanation">
-            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+            <h2><%= pluralize(@book.errors.count, "error") %> prohibited this user from being saved:</h2>
             <ul>
-              <% @user.errors.full_messages.each do |message| %>
+              <% @book.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
               <% end %>
             </ul>
@@ -31,4 +30,3 @@
     </div>
   </div>
 </div>
-</main>

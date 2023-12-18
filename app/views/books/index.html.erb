@@ -1,4 +1,4 @@
- <p id="notice"></p>
+<p id="notice"><%= flash[:notice] %></p>
 <div class='container px-5 px-sm-0'>
   <div id="error_explanation">
     <% if @book.errors[:title].any? || @book.errors[:body].any? %>
@@ -35,7 +35,7 @@
         <% end %>
       </div>
       <h2 class="mt-3">New book</h2>
-        <%= form_with model: @book, url: books_path, local: true do |f| %>
+        <%= form_with model: @book_new, url: books_path, local: true do |f| %>
           <div class="form-group">
             <%= f.label :title %><br>
             <%= f.text_field :title ,class:"form-control book_title" %>
@@ -62,14 +62,15 @@
         </thead>
         <tbody>
           <% @books.each do |book| %>
-          <tr>
-            <td><%= link_to  user_path(book.user) do %>
-              <%= image_tag book.user.get_profile_image(100,100) %>
-            <% end %>
-            </td>
-            <td><%= link_to book.title, book_path(book) %></td>
-            <td><%= book.body %></td>
-          </tr>
+            <tr>
+              <td>
+                <%= link_to user_path(book.user) do %>
+                  <%= image_tag book.user.get_profile_image(100,100) %>
+                <% end %>
+              </td>
+              <td><%= link_to book.title, book_path(book) %></td>
+              <td><%= book.body %></td>
+            </tr>
           <% end %>
         </tbody>
       </table>
